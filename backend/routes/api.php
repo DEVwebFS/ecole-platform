@@ -1,0 +1,1 @@
+Route::get('/test', fn() => ['message' => 'API works']);
