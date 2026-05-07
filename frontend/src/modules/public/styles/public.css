@@ -1,0 +1,29 @@
+/* Sidebar/Form Layout */
+.main-grid {
+  max-width: 1200px;
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  padding: 0 20px;
+}
+
+.card {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  border: 1px solid #eef2f6;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+}
+
+.btn-submit {
+  width: 100%;
+  background-color: #0d1b33;
+  color: white;
+  padding: 16px;
+  border-radius: 12px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+/* ... zidi l-baqi dial les styles dyalek hna ... */
