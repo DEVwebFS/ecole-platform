@@ -1,17 +1,27 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import PublicLayout from "./shared/layouts/PublicLayout";
-import Inscription from "./modules/public/pages/Inscription";
+import Accueil from "./pages/Accueil";
+import EcolePage from "./pages/EcolePage";
+import Activities from "./pages/Activites";
+import Inscription from "./pages/Inscription";
+import Niveaux from "./pages/Niveaux";
+import Connection from "./pages/Connexion";
+import PublicLayout from "../../shared/layouts/PublicLayout";
+
+// pages
+
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <PublicLayout />,
     children: [
-      { path: "inscription", element: <Inscription /> }
-    ]
-  }
+      { index: true, element: <Accueil /> },
+      { path: "ecole", element: <EcolePage /> },
+      { path: "niveaux", element: <Niveaux /> },
+      { path: "activities", element: <Activities /> },
+      { path: "inscription", element: <Inscription /> },
+      { path: "connexion", element: <Connection /> },
+    ],
+  },
 ]);
-
-export default function App() {
-  return <RouterProvider router={router} />;
-}
+export default router; 

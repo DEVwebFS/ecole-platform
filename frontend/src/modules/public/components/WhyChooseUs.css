@@ -1,0 +1,218 @@
+/* WhyChooseUs.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap');
+
+.why-us {
+  position: relative;
+  padding: 5rem 2rem;
+  background: linear-gradient(125deg, #fefaf5 0%, #ffffff 100%);
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Éléments décoratifs flottants */
+.bg-deco {
+  position: absolute;
+  font-size: 3rem;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
+  animation: floatDecor 12s infinite ease-in-out;
+}
+
+.deco-clock {
+  top: 15%;
+  left: 3%;
+  font-size: 3.5rem;
+  animation-delay: 0s;
+}
+
+.deco-star {
+  bottom: 20%;
+  right: 5%;
+  font-size: 4rem;
+  animation-delay: -4s;
+}
+
+.deco-grad {
+  top: 40%;
+  right: 15%;
+  font-size: 3rem;
+  animation-delay: -8s;
+}
+
+@keyframes floatDecor {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* En-tête */
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+.section-header h2 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #2F2FE4 0%, #1b6b8f 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.section-header h2 span {
+  background: linear-gradient(135deg, #E87F24, #FFA95A);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.underline {
+  width: 80px;
+  height: 4px;
+  background: #E87F24;
+  margin: 0.8rem auto 0;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.section-header:hover .underline {
+  width: 120px;
+}
+
+.subtitle {
+  color: #4a5b6e;
+  font-size: 1rem;
+  margin-top: 1rem;
+  font-weight: 400;
+}
+
+/* Grille responsive */
+.reasons-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Cartes modernes */
+.reason-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border-radius: 1.8rem;
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  box-shadow: 0 18px 30px -12px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(158, 211, 220, 0.3);
+  overflow: hidden;
+}
+
+.reason-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 28px 40px -16px rgba(47, 47, 228, 0.15);
+  border-color: rgba(232, 127, 36, 0.4);
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.card-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, transparent, #E87F24, transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.reason-card:hover .card-glow {
+  opacity: 1;
+}
+
+/* Icône */
+.reason-icon {
+  font-size: 2.2rem;
+  color: #2F2FE4;
+  background: rgba(47, 47, 228, 0.08);
+  padding: 0.7rem;
+  border-radius: 1.2rem;
+  transition: all 0.3s;
+}
+
+.reason-card:hover .reason-icon {
+  color: #E87F24;
+  background: rgba(232, 127, 36, 0.1);
+  transform: scale(1.02);
+}
+
+/* Contenu texte */
+.reason-content h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  color: #1e2a3a;
+}
+
+.reason-content p {
+  font-size: 0.95rem;
+  color: #4a5b6e;
+  line-height: 1.4;
+}
+
+/* Petit pied avec icône horloge */
+.clock-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: #2F2FE4;
+  margin-top: 0.5rem;
+  padding-top: 0.7rem;
+  border-top: 1px dashed rgba(158, 211, 220, 0.5);
+  width: 100%;
+  transition: gap 0.2s;
+}
+
+.reason-card:hover .clock-hint {
+  gap: 0.7rem;
+  color: #E87F24;
+}
+
+.clock-hint svg {
+  font-size: 0.85rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .why-us {
+    padding: 3rem 1.2rem;
+  }
+  .section-header h2 {
+    font-size: 1.9rem;
+  }
+  .reason-card {
+    padding: 1.3rem;
+  }
+  .reason-icon {
+    font-size: 1.8rem;
+  }
+  .reason-content h3 {
+    font-size: 1.2rem;
+  }
+  .bg-deco {
+    opacity: 0.04;
+    font-size: 2.5rem;
+  }
+}

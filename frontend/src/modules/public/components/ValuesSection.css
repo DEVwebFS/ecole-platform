@@ -1,0 +1,388 @@
+/* ValuesPhilosophy.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap');
+
+.values-philosophy {
+  position: relative;
+  padding: 5rem 2rem;
+  background: linear-gradient(135deg, #f8fcff 0%, #f0f7fa 100%);
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ===== DECORATIVE BACKGROUND ELEMENTS ===== */
+.bg-decoration {
+  position: absolute;
+  font-size: 5rem;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
+  user-select: none;
+  animation: floatBg 20s infinite ease-in-out;
+}
+
+.bg-book {
+  top: 10%;
+  left: 5%;
+  transform: rotate(-15deg);
+  animation-delay: 0s;
+}
+
+.bg-pencil {
+  bottom: 15%;
+  right: 8%;
+  transform: rotate(25deg);
+  animation-delay: -5s;
+}
+
+.bg-grad {
+  top: 60%;
+  left: 3%;
+  transform: rotate(10deg);
+  animation-delay: -8s;
+}
+
+.bg-atom {
+  bottom: 20%;
+  left: 20%;
+  font-size: 6rem;
+  animation-delay: -3s;
+}
+
+.bg-ruler {
+  top: 25%;
+  right: 12%;
+  transform: rotate(45deg);
+  animation-delay: -10s;
+}
+
+@keyframes floatBg {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+/* ===== MAIN LAYOUT ===== */
+.vp-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* LEFT COLUMN */
+.vp-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* Glassmorphism Cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  border-radius: 2rem;
+  padding: 2rem 2rem 2rem 2.5rem;
+  box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(158, 211, 220, 0.2);
+  transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.glass-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 40px -16px rgba(47, 47, 228, 0.12);
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(46, 125, 145, 0.3);
+}
+
+.card-title {
+  font-size: 1.9rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #2F2FE4 0%, #1b6b8f 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+  letter-spacing: -0.3px;
+}
+
+.card-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: #E87F24;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.glass-card:hover .card-title::after {
+  width: 100px;
+}
+
+/* List Styles */
+.values-list,
+.philosophy-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.7rem 0.5rem 0.7rem 0;
+  border-radius: 1rem;
+  transition: all 0.25s ease;
+  cursor: default;
+  border-bottom: 1px solid rgba(158, 211, 220, 0.2);
+}
+
+.list-item:hover {
+  transform: translateX(8px);
+  background: rgba(46, 125, 145, 0.04);
+  padding-left: 0.8rem;
+  border-bottom-color: rgba(232, 127, 36, 0.3);
+}
+
+.item-icon {
+  font-size: 1.6rem;
+  color: #2F2FE4;
+  min-width: 2.2rem;
+  transition: all 0.2s;
+}
+
+.list-item:hover .item-icon {
+  color: #E87F24;
+  transform: scale(1.05);
+}
+
+.item-text {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #1e2a3a;
+  letter-spacing: -0.2px;
+}
+
+/* ===== RIGHT COLUMN ===== */
+.vp-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Floating abstract shapes (layered background circles) */
+.floating-shape {
+  position: absolute;
+  border-radius: 50%;
+  z-index: 0;
+  filter: blur(40px);
+  opacity: 0.6;
+  transition: all 0.4s ease;
+}
+
+.shape-1 {
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, #9ED3DC, #6bb5c2);
+  top: -30px;
+  left: -40px;
+  animation: floatShape 8s infinite alternate ease-in-out;
+}
+
+.shape-2 {
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, #E87F24, #f5a65a);
+  bottom: 20px;
+  right: -20px;
+  animation: floatShape 10s infinite alternate-reverse ease-in-out;
+  opacity: 0.5;
+}
+
+.shape-3 {
+  width: 180px;
+  height: 180px;
+  background: #2F2FE4;
+  top: 40%;
+  left: -30px;
+  filter: blur(60px);
+  opacity: 0.2;
+  animation: softPulse 6s infinite alternate;
+}
+
+.shape-4 {
+  width: 150px;
+  height: 150px;
+  background: #9ED3DC;
+  bottom: -20px;
+  left: 20%;
+  filter: blur(45px);
+  opacity: 0.5;
+  animation: floatShape 7s infinite alternate;
+}
+
+.shape-5 {
+  width: 100px;
+  height: 100px;
+  background: #E87F24;
+  top: 15%;
+  right: 10%;
+  filter: blur(38px);
+  opacity: 0.45;
+  animation: floatShape 9s infinite alternate-reverse;
+}
+
+@keyframes floatShape {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(15px, 20px) scale(1.08);
+  }
+}
+
+@keyframes softPulse {
+  0% {
+    opacity: 0.15;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 0.3;
+    transform: scale(1.1);
+  }
+}
+
+/* Student image container with glass border & shadow */
+.student-image-container {
+  position: relative;
+  z-index: 10;
+  border-radius: 2.2rem;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(3px);
+  padding: 0.6rem;
+  box-shadow: 0 30px 40px -20px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.5);
+  transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+.student-image-container:hover {
+  transform: scale(1.02) translateY(-8px);
+  box-shadow: 0 40px 50px -20px rgba(0, 0, 0, 0.3);
+}
+
+.student-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  border-radius: 1.6rem;
+  object-fit: cover;
+  aspect-ratio: 3 / 4;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  filter: brightness(1.02) contrast(1.02);
+}
+
+.student-image-container:hover .student-image {
+  filter: brightness(1.04) contrast(1.04);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1024px) {
+  .vp-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .vp-right {
+    order: 1;
+  }
+
+  .vp-left {
+    order: 2;
+  }
+
+  .image-wrapper {
+    max-width: 420px;
+  }
+
+  .glass-card {
+    padding: 1.5rem;
+  }
+
+  .card-title {
+    font-size: 1.7rem;
+  }
+
+  .values-philosophy {
+    padding: 3rem 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .glass-card {
+    padding: 1.2rem;
+  }
+
+  .card-title {
+    font-size: 1.5rem;
+  }
+
+  .list-item {
+    gap: 0.7rem;
+  }
+
+  .item-icon {
+    font-size: 1.3rem;
+    min-width: 1.8rem;
+  }
+
+  .item-text {
+    font-size: 0.95rem;
+  }
+
+  .image-wrapper {
+    max-width: 320px;
+  }
+
+  .floating-shape {
+    filter: blur(35px);
+  }
+
+  .shape-1 {
+    width: 180px;
+    height: 180px;
+  }
+
+  .shape-2 {
+    width: 150px;
+    height: 150px;
+  }
+}

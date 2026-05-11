@@ -1,0 +1,266 @@
+/* pages/Inscription.css */
+
+/* Reset & base */
+.inscription-page {
+  min-height: 100vh;
+  background: #FFFBF1;
+  padding: 3rem 1.5rem;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.inscription-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+/* Form section */
+.form-section {
+  background: white;
+  border-radius: 32px;
+  box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  transition: transform 0.2s;
+}
+
+.form-header h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.form-header p {
+  color: #475569;
+  margin-bottom: 1.8rem;
+  border-left: 3px solid #E87F24;
+  padding-left: 1rem;
+}
+
+.inscription-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.input-icon {
+  color: #2F2FE4;
+  font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.8rem 1rem;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  background-color: #fefefe;
+  font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #2F2FE4;
+  box-shadow: 0 0 0 3px rgba(47, 47, 228, 0.1);
+}
+
+.form-group select {
+  cursor: pointer;
+}
+
+.form-group select:disabled {
+  background-color: #f1f5f9;
+  cursor: not-allowed;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #2F2FE4, #9ED3DC);
+  border: none;
+  padding: 1rem;
+  border-radius: 40px;
+  font-weight: 700;
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+  box-shadow: 0 6px 14px rgba(47, 47, 228, 0.2);
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 22px rgba(47, 47, 228, 0.3);
+  background: linear-gradient(135deg, #1e1eb5, #7bc4cf);
+}
+
+.legal-info {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+/* Contact section */
+.contact-section {
+  background: white;
+  border-radius: 32px;
+  box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+}
+
+.contact-section h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.contact-section > p {
+  color: #475569;
+  margin-bottom: 2rem;
+}
+
+.contact-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  background: #FFFBF1;
+  border-radius: 24px;
+  padding: 1rem 1.2rem;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.contact-card:hover {
+  transform: translateX(8px);
+  background: white;
+  border-color: #e2e8f0;
+  box-shadow: 0 12px 20px -12px rgba(0, 0, 0, 0.08);
+}
+
+.contact-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  flex-shrink: 0;
+}
+
+.contact-info {
+  flex: 1;
+}
+
+.contact-info h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.2rem;
+}
+
+.contact-info p {
+  font-size: 0.85rem;
+  color: #475569;
+  margin-bottom: 0.3rem;
+}
+
+.contact-action {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #2F2FE4;
+  letter-spacing: 0.3px;
+}
+
+.contact-note {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eef2ff;
+  font-size: 0.85rem;
+  color: #64748b;
+  text-align: center;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .inscription-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .form-section,
+  .contact-section {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .inscription-page {
+    padding: 1.5rem 1rem;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .form-header h1 {
+    font-size: 1.8rem;
+  }
+  .contact-card {
+    padding: 0.8rem 1rem;
+  }
+  .contact-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+  }
+}
