@@ -96,7 +96,7 @@ const About = ({ addRef }) => (
             <li><FaCheckCircle /> Encadrement personnalisé</li>
             <li><FaCheckCircle /> Valeurs humaines</li>
           </ul>
-        </div>
+          </div>
         <div className="about-gallery">
           <div className="gallery-item"><img src={studentsecole} alt="Bâtiment" /></div>
           <div className="gallery-item"><img src={ecole3} alt="Salle de classe" /></div>

@@ -2,8 +2,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Accueil from "./pages/Accueil";
 import EcolePage from "./pages/EcolePage";
 import Activities from "./pages/Activites";
-import Inscription from "./pages/Inscription";
 import Niveaux from "./pages/Niveaux";
+import Inscription from "./pages/Inscription";
 import Connection from "./pages/Connexion";
 import PublicLayout from "../../shared/layouts/PublicLayout";
 
@@ -21,6 +21,7 @@ const router = createBrowserRouter([
       { path: "activities", element: <Activities /> },
       { path: "inscription", element: <Inscription /> },
       { path: "connexion", element: <Connection /> },
+      
     ],
   },
 ]);

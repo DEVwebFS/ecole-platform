@@ -23,6 +23,7 @@ const Navbar = () => {
 <Link to="/ecole" className="nav-link">L'école</Link>
 <Link to="/niveaux" className="nav-link">Niveaux</Link>
 <Link to="/activities" className="nav-link">Activities</Link>
+<Link to="/inscription" className="nav-link">Inscription</Link>
 <Link to="/connexion" className="btn-connexion">Connexion</Link>
 
         </div>
