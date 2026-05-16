@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../styles/Inscription.css';
+import '../styles/inscription.css';
 
 import { LuGraduationCap } from "react-icons/lu";
 import { FiGlobe, FiPhone, FiMail, FiInstagram } from "react-icons/fi";
