@@ -13,11 +13,17 @@ import {
   FaLock
 } from "react-icons/fa";
   import { useNavigate } from "react-router-dom";
+import { loginUser } from "../../../services/authService";
 
 
 const Connection = () => {
   const [selectedRole, setSelectedRole] = useState("parent");
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+
+const [password, setPassword] = useState("");
+
+const [error, setError] = useState("");
 
   const roles = [
   {
@@ -40,16 +46,47 @@ const Connection = () => {
   },
 ];
 
-  const handleLogin = (e) => {
-    e.preventDefault();
+ const handleLogin = async (e) => {
 
-    // temporaire front only
-    localStorage.setItem("role", selectedRole);
+  e.preventDefault();
 
-    // plus tard backend + token + redirect
-    console.log("Role :", selectedRole);
-  };
+  setError("");
 
+  try {
+
+    const data = await loginUser({
+      email,
+      password,
+    });
+
+    localStorage.setItem("token", data.token);
+
+    localStorage.setItem(
+      "user",
+      JSON.stringify(data.user)
+    );
+
+
+    if (data.user.role === "admin") {
+      navigate("/admin/dashboard");
+    }
+
+    else if (data.user.role === "formateur") {
+      navigate("/formateur/dashboard");
+    }
+
+    else if (data.user.role === "parent") {
+      navigate("/parent/dashboard");
+    }
+
+  } catch (err) {
+
+    setError(
+      err.response?.data?.message ||
+      "Erreur de connexion"
+    );
+  }
+};
   return (
     <div className="connection-page">
       {/* LEFT SIDE */}
@@ -143,10 +180,12 @@ const Connection = () => {
               <label><FaEnvelope /> Email</label>
 
               <input
-                type="email"
-                placeholder="vous@ecole.com"
-                required
-              />
+  type="email"
+  placeholder="vous@ecole.com"
+  required
+  value={email}
+  onChange={(e) => setEmail(e.target.value)}
+/>
             </div>
 
             {/* PASSWORD */}
@@ -154,10 +193,19 @@ const Connection = () => {
               <label>Mot de passe</label>
               <label><FaLock /> Mot de passe</label>
               <input
-                type="password"
-                placeholder="••••••••"
-                required
-              />
+  type="password"
+  placeholder="••••••••"
+  required
+  value={password}
+  onChange={(e) => setPassword(e.target.value)}
+/>
+{
+  error && (
+    <p className="error-message">
+      {error}
+    </p>
+  )
+}
             </div>
 
             <button type="submit" className="login-btn">

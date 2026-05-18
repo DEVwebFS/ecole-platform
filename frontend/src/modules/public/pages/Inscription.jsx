@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
-import '../styles/inscription.css';
+import './inscription.css';
 
 import { LuGraduationCap } from "react-icons/lu";
-import { FiGlobe, FiPhone, FiMail, FiInstagram } from "react-icons/fi";
+import { FiGlobe, FiPhone, FiMail, FiInstagram, FiFacebook } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 
 const Inscription = () => {
  
   const [lang, setLang] = useState('FR');
 
-  
   const translations = {
     FR: {
       nav: ["Accueil", "L'école", "Niveaux", "Matières", "Activités", "Inscription"],
@@ -56,13 +55,14 @@ const Inscription = () => {
 
   return (
     <div className={`inscription-page ${lang === 'AR' ? 'rtl-content' : ''}`}>
-     
-      
 
-      
+     
       <header className="hero-header">
         <div className="container">
-          <p className="top-title">{lang === 'AR' ? 'انضم إلينا' : lang === 'EN' ? 'JOIN US' : 'REJOIGNEZ-NOUS'}</p>
+          <p className="top-title">
+            {lang === 'AR' ? 'انضم إلينا' : lang === 'EN' ? 'JOIN US' : 'REJOIGNEZ-NOUS'}
+          </p>
+
           <h1>{t.heroTitle}</h1>
           <p className="hero-subtitle">{t.heroSub}</p>
         </div>
@@ -71,14 +71,17 @@ const Inscription = () => {
       
       <main className="container main-layout">
         <div className="grid-wrapper">
+
           <div className="form-container">
             <h2>{t.formTitle}</h2>
+
             <form>
               <div className="form-row">
                 <div className="form-group">
                   <label>{t.labels[0]}</label>
                   <select><option>{lang === 'AR' ? 'اختر' : 'Sélectionner'}</option></select>
                 </div>
+
                 <div className="form-group">
                   <label>{t.labels[1]}</label>
                   <select><option>...</option></select>
@@ -90,6 +93,7 @@ const Inscription = () => {
                   <label>{t.labels[2]}</label>
                   <input type="text" />
                 </div>
+
                 <div className="form-group">
                   <label>{t.labels[3]}</label>
                   <input type="text" />
@@ -101,6 +105,7 @@ const Inscription = () => {
                   <label>{t.labels[4]}</label>
                   <input type="text" />
                 </div>
+
                 <div className="form-group">
                   <label>{t.labels[5]}</label>
                   <input type="text" />
@@ -112,13 +117,16 @@ const Inscription = () => {
                   <label>{t.labels[6]}</label>
                   <input type="tele" placeholder="+212 6..." />
                 </div>
+
                 <div className="form-group">
                   <label>{t.labels[7]}</label>
                   <input type="email" />
                 </div>
               </div>
 
-              <button type="submit" className="btn-send">{t.btnSend}</button>
+              <button type="submit" className="btn-send">
+                {t.btnSend}
+              </button>
             </form>
           </div>
 
@@ -126,47 +134,89 @@ const Inscription = () => {
             <div className="sidebar-card">
               <h3>{lang === 'AR' ? 'اتصال سريع' : 'Contact rapide'}</h3>
               <p>{lang === 'AR' ? 'لديك سؤال؟ اتصل بنا مباشرة.' : 'Une question ? Contactez-nous directement.'}</p>
-              
-              <a href="https://wa.me/212600000000" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>
+
+              <a href="https://wa.me/212610238320" target="_blank" rel="noopener noreferrer">
                 <div className="contact-info-row">
                   <div className="icon-wrapper wa-bg"><FaWhatsapp /></div>
                   <div>
                     <strong>WhatsApp</strong>
-                    <span>+212 6 00 00 00 00</span>
+                    <span>+212 6 10 23 83 20</span>
                   </div>
                 </div>
               </a>
 
-              <a href="https://www.instagram.com/jil.annahda.school" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>
+              <a href="https://www.facebook.com/share/18pz2jyhCQ/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">
                 <div className="contact-info-row">
-                  <div className="icon-wrapper ig-bg"><FiInstagram /></div>
+                  <div className="icon-wrapper fb-bg"><FiFacebook /></div>
                   <div>
-                    <strong>Instagram</strong>
+                    <strong>Facebook</strong>
                     <span>@annahda.school</span>
                   </div>
                 </div>
               </a>
 
-              
-              <a href="mailto:contact@annahda.ma" style={{ textDecoration: 'none', color: 'inherit' }}>
+              <a href="mailto:ecole.annahda@gmail.com">
                 <div className="contact-info-row">
-                  <div className="icon-wrapper mail-bg">
-                    <FiMail />
-                  </div>
+                  <div className="icon-wrapper mail-bg"><FiMail /></div>
                   <div>
                     <strong>Email</strong>
-                    <span>contact@annahda.ma</span>
+                    <span>ecole.annahda@gmail.com</span>
                   </div>
                 </div>
               </a>
 
             </div>
           </aside>
+
         </div>
       </main>
 
       
-      
+      <footer className="main-footer">
+        <div className="container footer-content">
+
+          <div className="footer-brand">
+            <div className="logo-section white-logo">
+              <div className="logo-icon-box footer-logo-box">
+                <LuGraduationCap />
+              </div>
+              <div>
+                <span className="logo-text">ANNAHDA</span>
+                <span className="logo-subtext">مؤسسة النهضة</span>
+              </div>
+            </div>
+
+            <p>{t.footerDesc}</p>
+          </div>
+
+          <div className="footer-links">
+            <h4>{lang === 'AR' ? 'تصفح' : 'Navigation'}</h4>
+            <ul>
+              <li>{t.nav[1]}</li>
+              <li>{t.nav[2]}</li>
+              <li>{t.nav[3]}</li>
+              <li>{t.nav[5]}</li>
+            </ul>
+          </div>
+
+          <div className="footer-contact">
+            <h4>Contact</h4>
+            <p><FiPhone /> +212 5 39 95 40 42</p>
+            <p><FiMail /> ecole.annahda@gmail.com</p>
+
+            <div className="footer-socials">
+              <FaWhatsapp />
+              <FiFacebook />
+            </div>
+          </div>
+
+        </div>
+
+        <div className="footer-bottom">
+          <p>© 2026 ANNAHDA. {lang === 'AR' ? 'جميع الحقوق محفوظة.' : 'Tous droits réservés.'}</p>
+        </div>
+      </footer>
+
     </div>
   );
 };
