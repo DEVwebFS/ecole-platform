@@ -2,28 +2,23 @@
 
 namespace App\Models;
 
-// app/Models/Niveau.php
 
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Niveau extends Model
+class Matiere extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'nom',
+        'description',
     ];
 
-    public function classes()
+    public function formateurs()
     {
-        return $this->hasMany(Classe::class);
-    }
-
-    public function etudiants()
-    {
-        return $this->hasMany(Etudiant::class);
+        return $this->hasMany(Formateur::class);
     }
 }

@@ -11,15 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('classes', function (Blueprint $table) {
-    $table->id();
-    $table->string('nom');
+    Schema::create('classes', function (Blueprint $table) {
+        $table->id();
 
-   $table->foreignId('niveau_id')
-    ->constrained()
-    ->onDelete('cascade');
+        $table->string('nom');
 
-    $table->timestamps();
+        $table->text('description')->nullable();
+
+        $table->foreignId('niveau_id')
+            ->constrained('niveaux')
+            ->onDelete('cascade');
+
+        $table->timestamps();
 });
     }
 
