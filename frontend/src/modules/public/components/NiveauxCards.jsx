@@ -1,181 +1,147 @@
-// components/NiveauxCards.jsx
-import React from 'react';
 
-const NiveauxCards = ({ niveaux, onSelectNiveau }) => {
+import { useState } from "react";
+import { niveauxData } from "../data/niveauxData";
+import { getMatiereConfig } from "../utils/getMatiereConfig";
+import "../styles/niveaux.css";
+
+export default function Niveaux() {
+  const [selectedLevel, setSelectedLevel] = useState(null);
+  const [selectedClass, setSelectedClass] = useState(null);
+
   return (
     <>
-    <style>
-{`
-.cardsSection{
-  padding: 80px 20px;
-  background: linear-gradient(180deg,#FFFBF1 0%,#ffffff 100%);
-}
+      <div className="wrap">
 
-.container{
-  max-width: 1400px;
-  margin: auto;
-}
+        {/* STEP 1 — Levels */}
+        {!selectedLevel && (
+          <>
+            <div className="page-header">
+              <h1 className="page-title">Nos <em>Niveaux</em></h1>
+            </div>
+            <div className="level-grid">
+              {niveauxData.map((lv) => (
+                <div
+                  key={lv.id}
+                  className="level-card anim"
+                  onClick={() => { setSelectedLevel(lv); setSelectedClass(null); }}
+                  role="button" tabIndex={0}
+                  onKeyDown={(e) => e.key==="Enter" && (setSelectedLevel(lv), setSelectedClass(null))}
+                >
+                  <div className="level-banner" style={{ background: lv.gradient }}>
+                    <img src={lv.image} alt={lv.title} className="cardImage" />
+                  </div>
+                  <div className="level-body">
+                    <p className="level-age">{lv.subtitle}</p>
+                    <h2 className="level-name">{lv.title}</h2>
+                    <p className="level-desc">{lv.description}</p>
+                    <button className="level-btn" style={{ background: lv.color }} tabIndex={-1}>
+                      Découvrir <i className="ti ti-arrow-right" aria-hidden="true" />
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
 
-.sectionTitle{
-  text-align: center;
-  font-size: 2.4rem;
-  font-weight: 800;
-  color: #1e1e1e;
-  margin-bottom: 55px;
-  position: relative;
-}
+        {/* STEP 2 — Classes */}
+        {selectedLevel && !selectedClass && (
+          <>
+            <div className="nav-row">
+              <button className="back-btn" onClick={() => setSelectedLevel(null)}>
+                <i className="ti ti-arrow-left" aria-hidden="true" /> Retour
+              </button>
+              <span className="bc-sep">/</span>
+              <span className="bc-cur">{selectedLevel.title}</span>
+            </div>
+            <div className="s-head anim">
+              <h2>{selectedLevel.title}</h2>
+              <span className="count-pill" style={{ background: selectedLevel.colorMid, color: selectedLevel.color }}>
+                {selectedLevel.classes.length} classes
+              </span>
+            </div>
+            <div className="classes-grid">
+              {selectedLevel.classes.map((cls, i) => (
+                <div
+                  key={i}
+                  className="class-card anim"
+                  onClick={() => setSelectedClass(cls)}
+                  role="button" tabIndex={0}
+                  onKeyDown={(e) => e.key==="Enter" && setSelectedClass(cls)}
+                >
+                  <div className="class-banner" style={{ background: cls.gradient }}>
+                   <i className={`ti ${cls.icon}`} aria-hidden="true" />
+                  </div>
+                  <div className="class-body">
+                    <p className="class-name">{cls.name}</p>
+                    <p className="class-prog">{cls.programme}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
 
-.sectionTitle::after{
-  content:"";
-  width: 90px;
-  height: 5px;
-  border-radius: 20px;
-  background: linear-gradient(90deg,#2F2FE4,#E87F24);
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: -15px;
-}
+        {/* STEP 3 — Detail */}
+        {selectedClass && selectedLevel && (
+          <>
+            <div className="nav-row">
+              <button className="back-btn" onClick={() => setSelectedClass(null)}>
+                <i className="ti ti-arrow-left" aria-hidden="true" /> Retour
+              </button>
+              <span className="bc-sep">/</span>
+              <button className="bc-link" onClick={() => setSelectedClass(null)}>{selectedLevel.title}</button>
+              <span className="bc-sep">/</span>
+              <span className="bc-cur">{selectedClass.name}</span>
+            </div>
 
-/* أفقي */
-.cardsGrid{
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 28px;
-}
-
-.card{
-  background: #fff;
-  border-radius: 28px;
-  overflow: hidden;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-  cursor: pointer;
-  transition: .35s ease;
-  position: relative;
-}
-
-.card:hover{
-  transform: translateY(-12px);
-  box-shadow: 0 25px 45px rgba(0,0,0,0.12);
-}
-
-.card::before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:6px;
-  background: var(--accent-color);
-  z-index: 5;
-}
-
-.imageWrapper{
-  height: 240px;
-  overflow: hidden;
-  position: relative;
-}
-
-.cardImage{
-  width:100%;
-  height:100%;
-  object-fit: cover;
-  transition: .6s ease;
-}
-
-.card:hover .cardImage{
-  transform: scale(1.08);
-}
-
-.overlay{
-  position:absolute;
-  inset:0;
-  background: linear-gradient(to top,rgba(0,0,0,.35),transparent);
-}
-
-.cardContent{
-  padding: 25px;
-}
-
-.cardTitle{
-  font-size: 1.6rem;
-  font-weight: 800;
-  margin-bottom: 12px;
-}
-
-.cardDesc{
-  color:#666;
-  line-height:1.7;
-  min-height: 80px;
-}
-
-.discoverBtn{
-  margin-top: 20px;
-  border:none;
-  padding:13px 22px;
-  border-radius:14px;
-  color:white;
-  font-weight:700;
-  cursor:pointer;
-  width:100%;
-  transition:.3s;
-}
-
-.discoverBtn:hover{
-  transform: scale(1.03);
-  opacity:.92;
-}
-
-/* tablette */
-@media(max-width:992px){
-  .cardsGrid{
-    grid-template-columns: repeat(2,1fr);
-  }
-}
-
-/* mobile */
-@media(max-width:768px){
-  .cardsGrid{
-    grid-template-columns: 1fr;
-  }
-
-  .sectionTitle{
-    font-size:2rem;
-  }
-}
-`}
-</style>
-    <div className="cardsSection">
-      <div className="container">
-        <h2 className="sectionTitle">Découvrez nos cycles</h2>
-        <div className="cardsGrid">
-          {niveaux.map((niveau) => (
-            <div
-              key={niveau.id}
-              className="card"
-              style={{ '--accent-color': niveau.color }}
-              onClick={() => onSelectNiveau(niveau.id)}
-            >
-              <div className="imageWrapper">
-                <img src={niveau.image} alt={niveau.title} className="cardImage" />
-                <div className="overlay"></div>
+            <div className="detail-header anim">
+              <div className="detail-strip" style={{ background: selectedClass.gradient }}>
+                <i className={`ti ${selectedClass.icon}`} aria-hidden="true" />
+                
               </div>
-              <div className="cardContent">
-                <h3 className="cardTitle" style={{ color: niveau.color }}>
-                  {niveau.title}
-                </h3>
-                <p className="cardDesc">{niveau.description}</p>
-                <button className="discoverBtn" style={{ background: niveau.color }}>
-                  Découvrir →
-                </button>
+
+              
+              <div className="detail-info">
+                <h2>{selectedClass.name}</h2>
+                <p>{selectedClass.programme}</p>
               </div>
             </div>
-          ))}
-        </div>
-      </div>
-    </div>
-    </>
-  );
-};
 
-export default NiveauxCards;
+            {selectedClass.groupes?.length > 0 && (
+              <>
+                <p className="sub-lbl">Groupes</p>
+                <div className="grp-row">
+                  {selectedClass.groupes.map((g, i) => (
+                    <div key={i} className="grp-chip anim">
+                      <span className="grp-dot" style={{ background: selectedLevel.color }} />
+                      {g}
+                    </div>
+                  ))}
+                </div>
+                <div className="divider" />
+              </>
+            )}
+
+            <p className="sub-lbl">Matières enseignées</p>
+            <div className="mat-grid">
+              {selectedClass.matieres.map((mat, i) => {
+                const cfg = getMatiereConfig(mat);
+                return (
+                  <div key={i} className="mat-card anim">
+                    <div className="mat-banner" style={{ background: cfg.bg }}>
+                      <i className={`ti ${cfg.icon}`} aria-hidden="true" />
+                    </div>
+                    <p className="mat-label">{mat}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </>
+        )}
+
+      </div>
+       
+    </>
+);
+}

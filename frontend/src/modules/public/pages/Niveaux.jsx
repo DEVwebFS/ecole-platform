@@ -1,6 +1,6 @@
 // pages/Niveaux.jsx
 import React, { useState } from 'react';
-import { niveauxData } from '../data/niveaux';
+import { niveauxData } from '../data/niveauxData';
 import NiveauxHero from '../components/NiveauxHero';
 import NiveauxCards from '../components/NiveauxCards';
 import NiveauDetails from '../components/NiveauDetails';
